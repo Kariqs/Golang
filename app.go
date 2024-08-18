@@ -29,21 +29,27 @@ func calculate() {
 }
 
 func profitCalculator() {
-	var revenue float64
-	var expenses float64
-	var taxRates float64
+	revenue := userInput("Revenue: ")
+	expenses := userInput("Expenses: ")
+	taxRates := userInput("Tax Rates: ")
 
-	fmt.Print("Revenue: ")
-	fmt.Scan(&revenue)
-	fmt.Print("Expenses: ")
-	fmt.Scan(&expenses)
-	fmt.Print("Tax Rate: ")
-	fmt.Scan(&taxRates)
+	var earningsBeforeTax, earningsAfterTax, ratio = earnings(revenue, expenses, taxRates)
 
-	var earningsBeforeTax float64 = revenue - expenses
-	var earningsAfterTax float64 = earningsBeforeTax * (1 - (taxRates / 100))
-	var ratio float64 = earningsBeforeTax / earningsAfterTax
 	fmt.Println("Earnings Before Tax (EBT):", earningsBeforeTax)
 	fmt.Println("Earnings After Tax (EAT):", earningsAfterTax)
-	fmt.Print("Ratio of EBT to EAT:", ratio)
+	fmt.Printf("Ratio of EBT to EAT:%.2f", ratio)
+}
+
+func userInput(text string) float64 {
+	var inputText float64
+	fmt.Print(text)
+	fmt.Scan(&inputText)
+	return inputText
+}
+
+func earnings(revenue, expenses, taxRates float64) (float64, float64, float64) {
+	var ebt float64 = revenue - expenses
+	var eat float64 = ebt * (1 - (taxRates / 100))
+	var ratio float64 = ebt / eat
+	return ebt, eat, ratio
 }
