@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github.com/Pallinder/go-randomdata"
 	"math"
 	"os"
 )
@@ -31,6 +32,7 @@ func calculate() {
 }
 
 func profitCalculator() {
+	fmt.Println(randomdata.PhoneNumber())
 	revenue, revenueerr := userInput("Revenue: ")
 	if revenueerr != nil {
 		fmt.Println(revenueerr)
