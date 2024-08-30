@@ -1,3 +1,3 @@
-Earnings Before Tax:8.00
-Earnings After Tax:6.00
+Earnings Before Tax:1000.00
+Earnings After Tax:750.00
 Ratio:1.33
